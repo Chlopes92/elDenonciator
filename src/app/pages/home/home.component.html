@@ -1,0 +1,12 @@
+<main>
+    <article>
+    <button (click)="select()" (click)="hideParagraph()">🎰Sélectionner une personne🎰</button>
+    <div>
+    
+        <h3 *ngIf="result">{{result.name}} 🌸</h3>
+        <p *ngIf="result">{{result.description}}</p>
+        <p *ngIf="isVisible">Personne n'a été sélectionné actuellement👀</p>
+        
+    </div>
+    </article>
+    </main>

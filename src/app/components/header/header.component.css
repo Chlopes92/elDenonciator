@@ -1,0 +1,22 @@
+a{
+    color: white;
+}
+
+a :hover{
+    font-weight: bold;
+}
+
+header{
+    background-color: var(--color-red);
+    height: 70px;
+}
+
+li{
+    margin: 23px 51px 51px 23px;
+}
+
+ul{
+    display: flex;
+    justify-content: end;
+    list-style: none;
+}

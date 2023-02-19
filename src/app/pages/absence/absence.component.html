@@ -1,0 +1,50 @@
+<main>
+<article>
+
+<!-- première section : le menu déroulant -->
+<form [formGroup]="absentForm">
+    <div>
+    <h1>Ajouter un.e absent.e</h1>
+        <!-- mon "formulaire" (ou mon menu déroulant) -->
+            <select formControlName="student">
+                <option disabled selected [ngValue]="null">Selectionner personne</option>
+                <option *ngFor="let personne of classe" [ngValue]="personne">{{personne.name}}</option>
+            </select> 
+    
+    <!-- bouton pour enregister le collègue que j'ai choisi -->
+    <button type="submit" (click)="addElement()">Ajouter</button>
+    </div>
+</form>
+    
+<span></span>
+    
+    
+<!-- deuxième section: les résultats -->
+<div class="classroom">
+    
+<!-- absents filles -->
+<div class="absents">
+    <h2>Liste des absents</h2>
+        <ul>
+            <!-- il faut que je m'inspire de ça pour la selection aléatoire -->
+            <li *ngFor="let personne of absentPersonne; let index=index"[ngClass]="{'classement' : personne.gender === 'female'}">{{personne.name}}
+            <button class="deleteButton" (click)="removeElement(index)"> x </button> 
+            </li>
+        </ul>
+</div>
+    
+    
+<!-- absents garçons -->
+<div class="absentes">
+    <h2>Liste des absentes</h2>
+        <ul>
+            <li *ngFor="let personne of absentPersonne; let index=index"[ngClass]="{'classement' : personne.gender === 'male'}">{{personne.name}}
+            <button class="deleteButton" (click)="removeElement(index)"> x </button> <br> <br>
+            </li>
+        </ul>
+</div>
+    
+</div>
+
+</article>
+</main>

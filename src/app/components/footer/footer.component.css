@@ -1,0 +1,17 @@
+footer{
+    background-color: var(--color-red);
+    color: white;
+    height: 70px;
+}
+
+p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+
+span{
+    padding: 5px;
+    font-weight: 700;
+}
