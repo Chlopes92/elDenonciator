@@ -16,25 +16,25 @@ absentPersonne!: Classe[];
   
 constructor(private formbuilder: FormBuilder, private absenceService: AbsenceService) {} 
   
-//on appelle toutes les méthodes qu'on a créé dans notre service pour les initialiser sur notre page & on initialise le tout!
+//Ensemble des méthodes créées dans le service, afin de les initialiser sur la page 
 ngOnInit(): void {
     this.initForm() 
     this.absentPersonne = this.absenceService.getStudent() 
 }
   
-// Fonction pour ajouter les personnes à la liste des absents
+// Fonction pour ajouter à la liste des absents
 addElement(){
   this.absenceService.addStudent(this.absentForm.value.student) 
   this.absentPersonne = this.absenceService.getStudent() 
   console.log(this.absentPersonne); 
 }
   
-// Fonction où on initialise le formulaire d'absents
+// Fonction pour initialiser le formulaire des absents
 initForm(){
   this.absentForm = this.formbuilder.group({student: null})
 }
   
-//Fonction supprimer un élève de la liste des absents
+//Fonction pour supprimer de la liste des absents
 removeElement(idStudent: number): void{
   this.absenceService.removeElement(idStudent);
   this.absentPersonne = this.absenceService.getStudent()

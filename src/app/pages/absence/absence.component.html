@@ -1,11 +1,11 @@
 <main>
 <article>
 
-<!-- première section : le menu déroulant -->
+<!-- Première Section-->
 <form [formGroup]="absentForm">
     <div>
     <h1>Ajouter un.e absent.e</h1>
-        <!-- mon "formulaire" (ou mon menu déroulant) -->
+        <!-- Menu Déroulant -->
             <select formControlName="student">
                 <option disabled selected [ngValue]="null">Selectionner personne</option>
                 <option *ngFor="let personne of classe" [ngValue]="personne">{{personne.name}}</option>
@@ -19,14 +19,14 @@
 <span></span>
     
     
-<!-- deuxième section: les résultats -->
+<!-- Deuxième Section-->
 <div class="classroom">
     
-<!-- absents filles -->
+<!-- Les garçons absents -->
 <div class="absents">
     <h2>Liste des absents</h2>
         <ul>
-            <!-- il faut que je m'inspire de ça pour la selection aléatoire -->
+            <!-- Classe qui permet de faire disparaître les prénoms des filles de la liste -->
             <li *ngFor="let personne of absentPersonne; let index=index"[ngClass]="{'classement' : personne.gender === 'female'}">{{personne.name}}
             <button class="deleteButton" (click)="removeElement(index)"> x </button> 
             </li>
@@ -34,7 +34,7 @@
 </div>
     
     
-<!-- absents garçons -->
+<!-- Les filles absentes -->
 <div class="absentes">
     <h2>Liste des absentes</h2>
         <ul>

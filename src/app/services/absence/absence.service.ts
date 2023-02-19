@@ -5,16 +5,17 @@ import { Classe,CLASSE } from 'src/app/mocks/classe.mock';
   providedIn: 'root'
 })
 
-//Ici on va créer nos methodes
+//Afin de créer nos methodes, on créer notre service
 export class AbsenceService {
 
   constructor() { }
 
-// on récupère nos collègues
+// Permet de récupèrer les élèves de la classe
  public getStudent() {
-    const student = localStorage.getItem("student");
 
-// si student existe, le retourner si non créer un nouvel élève et recommencer
+  const student = localStorage.getItem("student");
+
+// si student existe, le retourner sinon créer un nouvel élève et recommencer
   if(student) {
     return JSON.parse(student);
   } else {
@@ -23,21 +24,26 @@ export class AbsenceService {
   }
 }
 
-// on créer nos collègues (parce qu'on est trop fort!)
+// Afin de créer les élèves
 private createStudent() {
+
   const newStudent = JSON.stringify([]);
+
   localStorage.setItem('student', newStudent);
 }
 
-//on sauvegarde nos collègues (sinon ils disparaissent et c'est triste)
+//Permet de sauvegarder les élèves
 private saveStudent(student: Classe) {
-    localStorage.setItem('student', JSON.stringify(student));
+
+  localStorage.setItem('student', JSON.stringify(student));
 }
 
-// on ajoute nos collègues à la liste et on vérifie aussi si il n'y est pas déjà
+// Ajoute les élèves à la liste et vérifie s'ils n'y sont pas d
 public addStudent(absentStudent: Classe){
+
   const student = this.getStudent() 
   const existingStudent = student.find((student: Classe) => student.id == absentStudent.id); 
+
     if (existingStudent) {
       console.log("Cette personne est déjà dans la liste des absents"); 
     } else {
@@ -46,9 +52,11 @@ public addStudent(absentStudent: Classe){
       this.saveStudent(student) 
 }
 
-// on enlève un collègue et on sauvegarde la liste
+// Pour enlèver et sauvegarder l'élève dans la liste
 public removeElement(idStudent: number){
-  const student = this.getStudent() 
+
+  const student = this.getStudent()
+
   student.splice(idStudent, 1)
   this.saveStudent(student);
 }

@@ -10,10 +10,10 @@ export class HomeComponent {
 
   personne: Classe[] = CLASSE;
   result!: Classe;
+  isVisible = true;
 
   select(){
     this.result = this.fonction(this.personne);
-
     // if (this.result)
     // {console.log("Tu es la grande gagnante");}
     // else
@@ -21,6 +21,7 @@ export class HomeComponent {
 
   }
 
+// Fonction pour choisir une personne au hasard 
   fonction(personne: Classe[]){
 
     const rand = Math.random();
@@ -36,8 +37,7 @@ export class HomeComponent {
 
   }
 
-  isVisible = true;
-
+// Fonction pour faire disparaitre le paragraphe
   hideParagraph() {
     this.isVisible = false;
   }
