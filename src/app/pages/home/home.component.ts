@@ -9,7 +9,7 @@ import { Classe, CLASSE } from 'src/app/mocks/classe.mock';
 export class HomeComponent {
 
   personne: Classe[] = CLASSE;
-  result!: Classe;
+  result?: Classe;
   isVisible = true;
 
   select(){
@@ -22,19 +22,34 @@ export class HomeComponent {
   }
 
 // Fonction pour choisir une personne au hasard 
-  fonction(personne: Classe[]){
+  fonction(personne: Classe[]): Classe | undefined{
 
     const rand = Math.random();
     const totalPersonne = personne.length;
-    const randIndex = Math.floor(rand * totalPersonne);
-    const randomPersonne = personne[randIndex];
+    if(totalPersonne === 0){
 
-    
-    console.log(randIndex);
-    console.log(randomPersonne);
+      return undefined;
+    }
+    const unselectedPersonne = personne.filter(p => !p.selected);
+    if(unselectedPersonne.length === 0){
+      personne.forEach(p => p.selected = false);
+    }
 
+    let randomPersonne: Classe;
+    while (true){
+      const rand = Math.random();
+      const randIndex = Math.floor(rand * totalPersonne);
+      randomPersonne = personne[randIndex];
+      
+      console.log(randIndex);
+      console.log(randomPersonne);
+
+      if (!randomPersonne.selected){
+        randomPersonne.selected = true;
+        break;
+      }
+    }
     return randomPersonne;
-
   }
 
 // Fonction pour faire disparaitre le paragraphe

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Classe,CLASSE } from 'src/app/mocks/classe.mock';
+import { Classe, CLASSE } from 'src/app/mocks/classe.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,6 @@ export class AbsenceService {
 private createStudent() {
 
   const newStudent = JSON.stringify([]);
-
   localStorage.setItem('student', newStudent);
 }
 
